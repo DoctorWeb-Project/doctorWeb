@@ -1,0 +1,14 @@
+exports.up = function(Knex){
+    return Knex.schema.createTable('consulta', function(table){
+       table.increments().primary();
+       table.datetime('data').notNullable();
+       table.float('preco', 2, 9).notNullable();
+       table.string('paciente_cpf', 11 ).notNullable();
+
+       table.foreign('paciente_cpf').references('cpf').inTable('usuario');
+    })
+}
+
+exports.down = function(Knex){
+    return Knex.schema.dropTable('consulta');
+}
