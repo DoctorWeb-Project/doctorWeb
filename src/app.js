@@ -14,6 +14,8 @@ routes.post('/cadastro', userController.cadastro)
 
 routes.put('/atualizarConta', authenticateToken ,userController.atualizar)
 
+routes.delete('/deletarConta', authenticateToken ,userController.deletar)
+
 routes.get('/minhasConsultas', ()=>console.log("Suas consultas"))
 
 App.use(routes)
