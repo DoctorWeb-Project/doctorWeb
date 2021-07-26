@@ -4,9 +4,10 @@ exports.up = function(Knex){
         table.string('nome').notNullable();
         table.enu('sexo', ['M','F']).notNullable();
         table.string('rg', 14).notNullable();
-        table.float('peso', 2, 5).notNullable();
+        table.float('peso', 5, 2).notNullable();
         table.string('numero_sus', 15).notNullable();
         table.date('data_nascimento').notNullable();
+        table.string('senha').notNullable();
     })
 }
 
