@@ -1,3 +1,4 @@
+const { response } = require('express')
 const connection = require('../database/connection')
 const auth = require('../services/auth')
 
@@ -8,8 +9,12 @@ module.exports = {
 
         try {
             const unfilteredUser = await connection.raw(`SELECT nome FROM usuario WHERE cpf="${cpf}" AND senha="${senha}"`)
+            console.log(unfilteredUser)
+
+            if(!unfilteredUser[0][0]) return response.sendStatus(404)
+
             const user = unfilteredUser[0][0].nome
-            if(!user) return response.sendStatus(404)
+            
 
             const unfilteredUserRG = await connection.raw(`SELECT rg FROM usuario WHERE cpf="${cpf}"`)
             const userRG = unfilteredUserRG[0][0].rg
@@ -48,17 +53,35 @@ module.exports = {
 
         try {
             const unfilteredCpf = await connection.raw(`SELECT cpf FROM usuario WHERE rg ="${userRG}"`)
+            if(!unfilteredCpf[0][0]) return response.sendStatus(404)
+
             const cpf = unfilteredCpf[0][0].cpf
-
-            console.log("array de cpf: ",cpf)
-
-            if(cpf.length==0) return response.sendStatus(404)
 
             console.log("cpf: ",cpf)
 
             if(data.nome)  await connection.raw(`UPDATE usuario SET nome="${data.nome}" WHERE cpf="${cpf}" `)
             if(data.peso)  await connection.raw(`UPDATE usuario SET peso=${data.peso} WHERE cpf="${cpf}"`)
             if(data.senha)  await connection.raw(`UPDATE usuario SET senha="${data.senha}" WHERE cpf="${cpf}"`)
+
+            return response.sendStatus(204)
+
+        } catch (error) {
+            console.log(error)
+
+            return response.sendStatus(500)
+        }
+    },
+
+    async deletar(request, response){
+        const userRG = request.user.rg
+
+        try {
+            const unfilteredCpf = await connection.raw(`SELECT cpf FROM usuario WHERE rg="${userRG}"`)
+            const cpf = unfilteredCpf[0][0].cpf
+
+            if(!cpf) return response.sendStatus(404)
+
+            await connection.raw(`DELETE FROM usuario WHERE cpf="${cpf}"`) 
 
             return response.sendStatus(204)
 
