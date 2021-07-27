@@ -1,4 +1,3 @@
-const { response } = require('express')
 const connection = require('../database/connection')
 const auth = require('../services/auth')
 
