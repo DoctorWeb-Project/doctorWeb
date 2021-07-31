@@ -1,0 +1,12 @@
+body {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-color: #F0F0F5;
+}
+
+input, button, textarea {
+  border: 0;
+  outline: none;
+  border-radius: 8px;
+}
