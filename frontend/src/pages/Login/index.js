@@ -20,7 +20,7 @@ export function Login(){
                 <input placeholder="Senha" />
                 <PurpleButton title="Entrar" navigateTo="#" />
 
-                <span>Não possui uma conta? <Link to="#">Clique aqui!</Link></span>
+                <span>Não possui uma conta? <Link to="/register">Clique aqui!</Link></span>
             </main>
 
         </div>
