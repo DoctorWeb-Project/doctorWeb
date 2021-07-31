@@ -1,0 +1,35 @@
+ .purpleButton {
+    width: 360px;
+    height: 72px;
+    background-color: #6137B2;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    transition: 0.5s;
+    text-decoration: none;
+
+}
+
+
+ .purpleButton:hover{
+    background-color: #9C7AE9;
+}
+
+ .purpleButton span{
+    color: #FFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    margin-left: 50px;
+}
+
+.loginIcon {
+    display: flex;
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    background-color: #8257E5;
+    justify-content: center;
+    align-items: center;
+}
