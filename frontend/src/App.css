@@ -9,4 +9,36 @@ input, button, textarea {
   border: 0;
   outline: none;
   border-radius: 8px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  list-style: 18px;
+  color: #A0A0B2;
+}
+
+input{
+  padding: 0 8px;
+}
+
+label{
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  color: #A0A0B2;
+  margin-bottom: 8px;
+}
+
+.inputWrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inputWrapper input {
+  width: 280px;
+}
+
+
+.rightSideColumn{
+  margin-left: 24px;
 }
