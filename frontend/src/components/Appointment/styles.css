@@ -1,0 +1,75 @@
+.appointment{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.singleLine{
+    width: 270px;
+    border: 1px solid #9C7AE9;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.appointmentAction{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.appointmentAction span{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 35px;
+    color: #322153;
+    margin-right: 24px;
+    align-content: center;
+}
+
+.appointmentAction *:hover{
+    filter: brightness(1.5);
+}
+
+.appointmentInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.appointmentInfo span{
+    margin-right: 5px;
+    margin-left: 5px;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.appointmentInfo span:hover{
+    filter: brightness(1.5);
+}
+
+.appointmentInfo svg:hover{
+    filter: brightness(1.5);
+}
+
+.dateSpan{
+    color: #9C7AE9;
+}
+
+.timeSpan{
+    color: #34CB79;
+}
+
+.priceSpan{
+    color: #6137B2;
+}
+
+.pipe{
+    color: #8257E5;
+}
