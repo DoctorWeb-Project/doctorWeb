@@ -29,7 +29,7 @@ module.exports ={
 
             const cpf = unfilteredCpf[0][0].cpf
 
-            await connection.raw(`INSERT INTO consulta VALUES(default, ${data.data}, ${data.preco}, "${cpf}")`)
+            await connection.raw(`INSERT INTO consulta VALUES(default,"${data.nome}","${data.data}", ${data.preco}, "${cpf}")`)
 
             return response.sendStatus(201)
 
@@ -57,6 +57,8 @@ module.exports ={
             if(!consultation[0][0]) return response.sendStatus(404)
 
             if(data.data) await connection.raw(`UPDATE consulta SET data=${data.data} WHERE id=${id} AND paciente_cpf=${cpf}`)
+            if(data.nome) await connection.raw(`UPDATE consulta SET nome="${data.nome}" WHERE id=${id} AND paciente_cpf=${cpf}`)
+            if(data.preco) await connection.raw(`UPDATE consulta SET preco=${data.preco} WHERE id=${id} AND paciente_cpf=${cpf}`)
 
             return response.sendStatus(204)
 
