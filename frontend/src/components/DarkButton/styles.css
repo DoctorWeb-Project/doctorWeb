@@ -1,0 +1,11 @@
+.darkButton{
+    width: 266px;
+    height: 56px;
+    background: #322153;
+    color: #FFFF;
+    transition: 0.5s;
+}
+
+.darkButton:hover{
+    background: #6137B2;
+}
