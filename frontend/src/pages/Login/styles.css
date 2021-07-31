@@ -1,0 +1,72 @@
+.loginContainer{
+    background-image: url('../../assets/background-login.svg');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 800px;
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+}
+
+.loginContainer header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doctorweb2{
+    max-width: 250px;
+    align-self: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main h1{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 45px;
+    width: 465px;
+    height: 80px;
+    color: #322153;
+    text-align: center;
+}
+
+main p{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #6C6C80;
+    width: 390px;
+    height: 76px;
+    text-align: center;
+}
+
+main span {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    font-style: italic;
+    line-height: 64px;
+    text-align: center;
+    color: #737373;
+}
+
+main span a{
+    text-decoration: none;
+    color:#322153;
+}
+
+input{
+   height: 65px;
+   width: 450px;
+   margin-bottom: 40px; 
+}
+
+
+
