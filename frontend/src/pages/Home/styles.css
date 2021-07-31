@@ -1,0 +1,41 @@
+.container {
+    max-height: 100Vh;
+    max-width: 100Vw;
+    padding: 0 50px;
+    background: url('../../assets/Background.svg') no-repeat  500px bottom;
+}
+
+
+.doctorweb1{
+    width: 360px;
+}
+
+
+.container main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.textContent { 
+    display: flex;
+    flex-direction: column;
+    max-width: 523px;
+}
+
+.textContent h1 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 54px;
+    font-weight: 700;
+    color: #322153;
+}
+
+.textContent p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    line-height: 38px;
+    font-weight: 400;
+    color: #6C6C80;
+}
+
