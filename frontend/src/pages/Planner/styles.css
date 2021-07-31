@@ -1,0 +1,103 @@
+.plannerContainer{
+    height: 100vh;
+    width: 100vw;
+    background: url('../../assets/Background.svg') no-repeat  500px bottom;
+}
+
+.plannerContainer header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.plannerContainer header img{
+    width: 200px;
+    height: 67px;
+}
+
+.userArea{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.userArea button{
+    width: 160px;
+    height: 40px;
+    margin-right: 42px;
+}
+
+.userArea span{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    margin-right: 8px;
+    color: #322153;
+}
+
+.userIcon {
+    width: 60px;
+    height: 60px;
+    background: #8A3FFC;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    color: #FFFF;
+}
+
+.editInfo{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #34CB79;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%,-50%);
+    transition: 0.5s;
+}
+
+.editInfo:hover{
+    background: #9C7AE9;
+}
+
+
+.plannerContainer main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card{
+    width: 336px;
+    height: 520px;
+    background: #FFFF;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.card > h1{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 30px;
+    line-height: 35px;
+    color: #322153;
+
+}
+
+
