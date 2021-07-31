@@ -19,7 +19,7 @@
     align-self: center;
 }
 
-.loginContainer main {
+.loginContainer main, form {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -16,9 +16,11 @@ export function Login(){
                 <h1>Otimiza seu tempo e cuida da sua saúde</h1>
                 <p>Ajudamos pessoas a organizarem suas consultas médicas.</p>
 
-                <input placeholder="Nome de usuário" />
-                <input placeholder="Senha" />
-                <PurpleButton title="Entrar" navigateTo="#" />
+                <form>
+                    <input placeholder="Nome de usuário" />
+                    <input placeholder="Senha" />
+                    <PurpleButton title="Entrar" element="button" type="submit" />
+                </form>
 
                 <span>Não possui uma conta? <Link to="/register">Clique aqui!</Link></span>
             </main>
