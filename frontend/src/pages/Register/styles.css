@@ -68,6 +68,10 @@
     width: 600px;
 }
 
+.registerForm > label{
+    align-self: flex-start;
+}
+
 .registerForm input {
     background: #F0F0F5;
 }
