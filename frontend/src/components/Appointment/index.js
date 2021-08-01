@@ -4,14 +4,12 @@ import {FiEdit, FiCalendar, FiClock} from 'react-icons/fi'
 import './styles.css'
 
 export function Appointment(props){
-    console.log(props)
-
     return(
         <div className="appointment">
             <div className="singleLine" />
             <div className="appointmentAction">
                 <span>{props.data?.nome}</span>
-                <FiEdit color="#8257E5" size={24} />
+                <FiEdit onClick={props.onClickEdit} color="#8257E5" size={24} />
             </div>
             <div className="appointmentInfo">
                 <FiCalendar color="#9C7AE9" size={24} />
