@@ -2,8 +2,11 @@ const express = require("express")
 const consultationController = require("./controllers/consultationController")
 const userController = require('./controllers/userController')
 const { authenticateToken } = require("./services/auth")
+const cors = require('cors')
 
 const App = express()
+
+App.use(cors())
 
 App.use(express.json())
 
