@@ -34,6 +34,9 @@ Esse projeto foi desenvolvido pelos alunos do 2 AII do curso técnico em Inform�
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](/LICENSE) para mais detalhes.
 
+<a href="https://storyset.com/business">SVG illustrations by Storyset</a><br>
+<a href="https://www.blobmaker.app/">Blobs SVG made by Blobmaker</a>
+
 ---
 
-Feito com :heart: por Cauane, Edmarcos, Emanuel, Giulian e Laura.
+Feito com :heart: por Cauane, Edmarcos, Emanuel, Giulian e Laura.<br>
