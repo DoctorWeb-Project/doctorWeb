@@ -1,5 +1,7 @@
 const axios = require("axios")
 
+const token = localStorage.getItem('token')
+
 const api = axios.create({
     baseURL: "http://10.0.0.105:3333",
     headers: {
@@ -7,15 +9,13 @@ const api = axios.create({
     }
 })
 
-const token = localStorage.getItem('token')
-
 api.interceptors.response.use(
     response => {
         return response
     },
 
     error => {
-        if(error.message == 'Network Error'){
+        if(error.message === 'Network Error'){
             
             //Navigate('Landing',{message:'connection error'})
             
