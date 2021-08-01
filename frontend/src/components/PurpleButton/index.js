@@ -5,7 +5,12 @@ import {FiLogIn} from 'react-icons/fi'
 
 export function PurpleButton(props){
     return props.element === "button"? (
-        <button className="purpleButton" type={props.type} to={props.navigateTo}>
+        <button 
+        className="purpleButton" 
+        type={props.type} 
+        to={props.navigateTo}
+        action={props.onClick}
+        >
             <div className="loginIcon">
                 <FiLogIn size={24} color="#FFF"/>
             </div>
