@@ -1,7 +1,5 @@
 const axios = require("axios")
 
-const token = localStorage.getItem('token')
-
 const api = axios.create({
     baseURL: "http://10.0.0.105:3333",
     headers: {
@@ -36,6 +34,7 @@ api.interceptors.response.use(
 
 api.interceptors.request.use(
     config => {
+        const token = localStorage.getItem('token')
         if(token)
             config.headers.authorization = `Bearer ${token}` 
         return Promise.resolve(config)
