@@ -40,7 +40,7 @@ export function Login(){
 
                 <form onSubmit={signIn}>
                     <input value={cpf} onChange={event => setCPF(event.target.value)} placeholder="número do cpf" />
-                    <input value={password} onChange={event=>setPassword(event.target.value)} placeholder="Senha" />
+                    <input value={password} onChange={event=>setPassword(event.target.value)} type="password" placeholder="Senha" />
                     <PurpleButton title="Entrar" element="button" type="submit"/>
                 </form>
 
