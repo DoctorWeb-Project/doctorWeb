@@ -10,7 +10,7 @@ module.exports ={
 
             const cpf = unfilteredCpf[0][0].cpf
             
-            const consultations = await connection.raw(`SELECT * FROM consulta WHERE paciente_cpf=${cpf}`)
+            const consultations = await connection.raw(`SELECT id, nome, MONTH(data) as mes ,DAY(data) as dia, HOUR(data) as hora, MINUTE(data) as minutos ,preco, paciente_cpf FROM consulta WHERE paciente_cpf=${cpf}`)
             return response.json(consultations[0])
 
         } catch (error) {
