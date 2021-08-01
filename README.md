@@ -3,10 +3,8 @@
 </h1>
 
 <h3 align="center">
-  DoctorWeb
+  Otimiza seu tempo e cuida da sua saúde
 </h3>
-
-<blockquote align="center">Otimiza seu tempo e cuida da sua saúde</blockquote>
 
 <p align="center">
 
