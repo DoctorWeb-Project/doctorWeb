@@ -17,8 +17,8 @@ export function Login(){
         event.preventDefault()
         try{
             const response = await api.post('/login', {cpf: cpf, senha: password})
-            saveUserTokenToStorage(response)
-            console.log(response)
+            saveUserTokenToStorage(response.data)
+            console.log(response.data)
             history.push('/planner')
 
         } catch (error) {
