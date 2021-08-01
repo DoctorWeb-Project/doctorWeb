@@ -18,12 +18,9 @@ module.exports = {
             const unfilteredUserRG = await connection.raw(`SELECT rg FROM usuario WHERE cpf="${cpf}"`)
             const userRG = unfilteredUserRG[0][0].rg
 
-            console.log("rg: ",userRG)
-            console.log("usuario: ", user)
-
             const token = auth.generateAccessToken(userRG)
 
-            return response.send(token)
+            return response.json(token)
 
         } catch (error) {
             console.log(error)
