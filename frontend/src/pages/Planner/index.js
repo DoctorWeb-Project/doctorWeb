@@ -7,10 +7,14 @@ import {FiEdit} from 'react-icons/fi'
 import './styles.css'
 import api from '../../services/api'
 import { useHistory } from 'react-router-dom'
+import { Modal } from '../../components/Modal'
 
 
 export function Planner(){
     const [appointments, setAppointments] = useState([])
+    const [modalVissible, setModalVisible] = useState(false)
+    const [modalType, setModalType] = useState('')
+
     const history = useHistory()
     const month = new Date().getMonth() +1
 
@@ -26,6 +30,22 @@ export function Planner(){
         }
     }
 
+    async function createAppointment(data){
+        try {
+            await api.post('/criarConsulta', data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async function updateAppointment(data){
+        try {
+            await api.post(`/atualizarConsulta/${data.id}`)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     useEffect(()=>{
         loadAppointments()
@@ -37,7 +57,7 @@ export function Planner(){
                 <img src={Logo} alt="DoctorWeb"/>
                 
                 <div className="userArea">
-                    <DarkButton title="Adicionar" />
+                    <DarkButton title="Adicionar" action={()=> {setModalVisible(true); setModalType('add')}} />
                     <span>Bem-vindo, Fulano</span>
                     <div className="userIcon">F</div>
                     <div className="editInfo">
@@ -83,6 +103,12 @@ export function Planner(){
                 </div>
             </main>
 
+            {modalVissible && modalType==="add" && (
+                <Modal title="Nova Consulta" setStateFunction={setModalVisible} />
+            )}
+             {modalVissible && modalType==="update" && (
+                <Modal title="Atualizar consulta" setStateFunction={setModalVisible} />
+            )}
         </div>
     )
 }
