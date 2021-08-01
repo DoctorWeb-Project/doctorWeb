@@ -7,16 +7,21 @@ import {FiEdit} from 'react-icons/fi'
 import './styles.css'
 import api from '../../services/api'
 import { useHistory } from 'react-router-dom'
-import { Modal } from '../../components/Modal'
+import { Formik } from 'formik'
+import moment from 'moment'
+import { date } from 'yup'
 
 
 export function Planner(){
     const [appointments, setAppointments] = useState([])
     const [modalVissible, setModalVisible] = useState(false)
+    const[selectedAppointment, setSelectedAppointment] = useState()
     const [modalType, setModalType] = useState('')
 
     const history = useHistory()
-    const month = new Date().getMonth() +1
+    const month = moment(new Date()).format('MM')
+    const nextMonth = moment(new Date()).add(1, 'M').format('MM')
+    const year = new Date().getFullYear()
 
     async function loadAppointments(){
         try {
@@ -31,8 +36,9 @@ export function Planner(){
     }
 
     async function createAppointment(data){
+        const date = `${data.date} ${data.time}`
         try {
-            await api.post('/criarConsulta', data)
+            await api.post('/criarConsulta', {...data, date: date})
         } catch (error) {
             console.log(error)
         }
@@ -71,10 +77,10 @@ export function Planner(){
                 <div className="card">
                     <h1>Este mês</h1>
                     { appointments.length>0 && appointments.map(appointment => {
-                        console.log(month)
-                        if(appointment.mes == month ){
+                        
+                        if(appointment.mes === month && appointment.ano === year ){
                             return(
-                                <Appointment data={appointment} />
+                                <Appointment onClickEdit={()=>{setModalVisible(true); setModalType('update'); setSelectedAppointment(appointment)}} key={appointment.id} data={appointment} />
                             )
                         }
                     })}
@@ -82,10 +88,9 @@ export function Planner(){
                 <div className="card">
                     <h1>Próximo mês</h1>
                     { appointments.length>0 && appointments.map(appointment => {
-                        console.log(month)
-                        if(appointment.mes == month + 1 ){
+                        if(appointment.mes === nextMonth && appointment.ano === year ){
                             return(
-                                <Appointment data={appointment} />
+                                <Appointment onClickEdit={()=>{setModalVisible(true); setModalType('update'); setSelectedAppointment(appointment)}} key={appointment.id} data={appointment} />
                             )
                         }
                     })}
@@ -93,21 +98,56 @@ export function Planner(){
                 <div className="card">
                     <h1>Seguintes</h1>
                     { appointments.length>0 && appointments.map(appointment => {
-                        console.log(month)
-                        if(appointment.mes > month + 1 ){
+                        if(appointment.mes > nextMonth ){
+                            console.log(appointment)
                             return(
-                                <Appointment data={appointment} />
+                                <Appointment onClickEdit={()=>{setModalVisible(true); setModalType('update'); setSelectedAppointment(appointment)}} key={appointment.id} data={appointment} />
                             )
                         }
                     })}
                 </div>
             </main>
 
-            {modalVissible && modalType==="add" && (
-                <Modal title="Nova Consulta" setStateFunction={setModalVisible} />
-            )}
-             {modalVissible && modalType==="update" && (
-                <Modal title="Atualizar consulta" setStateFunction={setModalVisible} />
+            {modalVissible && (
+                <div className="overlay">
+                    <div className="modal">
+                        <span>{modalType==="add"? 'Nova consulta': modalType=="update"? 'Atualizar consulta': 'Editar usuário' }</span>
+                        <Formik
+                        initialValues={modalType==="add"? 
+                        {name:'', date:'', time:'', price:''} : 
+                        {name: selectedAppointment.nome, date: `${selectedAppointment.ano}-${selectedAppointment.mes}-${selectedAppointment.dia}`, time:`${ selectedAppointment.hora}:${selectedAppointment.minutos}`, price: selectedAppointment.preco}}
+                        onSubmit={values => modalType==="add"? createAppointment(values) : updateAppointment(values)} 
+                        >
+                           {({
+                               handleChange,
+                               handleSubmit,
+                               values,
+                               errors
+                           })=>(
+                            <form>
+                                    <div className="content">
+                                        <div className="leftSideContent">
+                                            <label>Nome</label>
+                                            <input name="name" value={values.name} onChange={handleChange} />
+                                            <label>Data:</label>
+                                            <input type="date" name="date" value={values.date} onChange={handleChange} />
+                                            <DarkButton title="Criar consulta" type="submit" action={handleSubmit} />
+                                        </div>
+            
+                                        <div className="rightSideContent">
+                                            <label>Preço</label>
+                                            <input name="price" value={values.price} onChange={handleChange} />
+                                            <label>Hora</label>
+                                            <input type="time" name="time" value={values.time} onChange={handleChange} />
+                                            <DarkButton title="Cancelar" type="button" action={()=> setModalVisible(false)} />
+                                        </div>
+                                    </div>
+                            </form>
+                           )}
+                        </Formik>
+        
+                    </div>
+                </div>
             )}
         </div>
     )
