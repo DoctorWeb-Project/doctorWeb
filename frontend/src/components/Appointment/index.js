@@ -1,5 +1,5 @@
 import React from 'react'
-import {FiEdit, FiCalendar, FiClock} from 'react-icons/fi'
+import {FiEdit, FiCalendar, FiClock, FiTrash} from 'react-icons/fi'
 
 import './styles.css'
 
@@ -10,6 +10,7 @@ export function Appointment(props){
             <div className="appointmentAction">
                 <span>{props.data?.nome}</span>
                 <FiEdit onClick={props.onClickEdit} color="#8257E5" size={24} />
+                <FiTrash onClick={props.onClickDelete} color="#F54A4A" size={24} />
             </div>
             <div className="appointmentInfo">
                 <FiCalendar color="#9C7AE9" size={24} />
