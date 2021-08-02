@@ -6,9 +6,10 @@ export const UserContext = createContext({})
 export const UserContextProvider = ({children})=>{
     const [ userToken, setUserToken] = useState()
 
-    function saveUserTokenToStorage(token){
-        localStorage.setItem('token', token)
-        setUserToken(token)
+    function saveUserTokenToStorage(data){
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('userName', data.user)
+        setUserToken(data.token)
     }
 
     function getUserDataFromStorage(){
