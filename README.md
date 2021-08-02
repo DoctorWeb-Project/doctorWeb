@@ -47,6 +47,26 @@ Please, if you are going to create another project with the same images and artw
 <a href="https://storyset.com/business">SVG illustrations by Storyset</a><br>
 <a href="https://www.blobmaker.app/">Blobs SVG made by Blobmaker</a>
 
+## 🖼️ Fotos do projeto
+<h1 align="center">
+    <img alt="Imagem 01" src="./images/01.png" width="600px" />
+</h1>
+<h1 align="center">
+    <img alt="Imagem 02" src="./images/02.png" width="600px" />
+</h1>
+<h1 align="center">
+    <img alt="Imagem 03" src="./images/03.png" width="600px" />
+</h1>
+<h1 align="center">
+    <img alt="Imagem 04" src="./images/04.png" width="600px" />
+</h1>
+<h1 align="center">
+    <img alt="Imagem 05" src="./images/05.png" width="600px" />
+</h1>
+<h1 align="center">
+    <img alt="Imagem 06" src="./images/06.png" width="600px" />
+</h1>
+
 ---
 
 Feito com :heart: por Cauane, Edmarcos, Emanuel, Giulian e Laura.<br>
