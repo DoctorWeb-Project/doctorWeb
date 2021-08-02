@@ -14,7 +14,7 @@ api.interceptors.response.use(
 
     error => {
         if(error.message === 'Network Error'){
-            
+            alert("Você não parece estar conectado a rede. Tente novamente mais tarde")
             //Navigate('Landing',{message:'connection error'})
             
         }
