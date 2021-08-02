@@ -15,10 +15,19 @@ export function Register(){
     async function handleRegisterUser(values){
         try {
             const response = await api.post('/cadastro', values)
-            console.log(response.data)
             history.push('/login')
         } catch (error) {
-            console.log(error)
+            if(error.response){
+                if(error.response.status ===500){
+                    alert("Desculpe, houve uma falha interna. Tente novavente mais tarde.")
+                }
+
+                if(error.response.status===400){
+                    alert("Por favor, preencha corretamente os campos para continuar.")
+                }
+            }
+
+
         }
     }
 
