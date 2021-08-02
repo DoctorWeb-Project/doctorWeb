@@ -40,6 +40,14 @@
     color: #322153;
 }
 
+#logOut{
+    background: #F54A4A;
+}
+
+#logOut:hover{
+    background: #e92020;
+}
+
 .userIcon {
     width: 60px;
     height: 60px;
@@ -242,4 +250,8 @@
 
 .modal .rightSideContent #deleteUser:last-child{
     background: #F54A4A !important; 
+}
+
+.modal .rightSideContent #deleteUser:last-child:hover{
+    background: #e92020 !important; 
 }
