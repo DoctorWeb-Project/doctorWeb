@@ -74,6 +74,31 @@ export function Planner(){
         setSelectedAppointment(appointment)
     }
 
+    function handleUserEditClick(){
+        setModalVisible(true)
+        setModalType('user')
+    }
+
+    async function handleUpdateUser(values){
+        try {
+            await api.put('/atualizarConta', values)
+            localStorage.setItem('userName', values.name)
+            setModalVisible(false)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async function handleDeleteUser(){
+        try {
+            await api.delete('/deletarConta')
+            setModalVisible(false)
+            history.push('/')
+        } catch (error) {
+            
+        }
+    }
+
   
 
     useEffect(()=>{
@@ -99,10 +124,10 @@ export function Planner(){
                 
                 <div className="userArea">
                     <DarkButton title="Adicionar" action={()=> {setModalVisible(true); setModalType('add')}} />
-                    <span>Bem-vindo, Fulano</span>
-                    <div className="userIcon">F</div>
+                    <span>Bem-vindo, {localStorage.getItem('userName')}</span>
+                    <div className="userIcon">{localStorage.getItem('userName')[0]}</div>
                     <div className="editInfo">
-                        <FiEdit color="#FFFF" size={24} />
+                        <FiEdit onClick={handleUserEditClick} color="#FFFF" size={24} />
                     </div>
                 </div>
 
@@ -158,10 +183,10 @@ export function Planner(){
                 <div className="overlay">
                     <div className="modal">
                         <header>
-                            <span>{modalType==="add"? 'Nova consulta': modalType=="update"? 'Atualizar consulta': 'Deletar consulta?' }</span>
+                            <span>{modalType==="add"? 'Nova consulta': modalType=="update"? 'Atualizar consulta': modalType==="delete"?'Deletar consulta?': 'Informações do usuário' }</span>
                             <FiX className="closeButton" onClick={()=>setModalVisible(false)} color="#F54A4A" size={24} />
                         </header>
-                        {modalType !=='delete'? (
+                        {modalType ==='add' || modalType==='update'? (
                             <Formik
                             initialValues={modalType==="add"? 
                             {name:'', date:'', time:'', price:''} : 
@@ -195,7 +220,39 @@ export function Planner(){
                                 </form>
                                )}
                             </Formik>
-                        ): (
+                        ): modalType==="user"? (
+                            <Formik
+                            initialValues={{name:'', weight:'', password:'', confirmPassword:''}}
+                            onSubmit={values => handleUpdateUser(values)} 
+                            >
+                               {({
+                                   handleChange,
+                                   handleSubmit,
+                                   values,
+                                   errors
+                               })=>(
+                                <form>
+                                        <div className="content">
+                                            <div className="leftSideContent">
+                                                <label>Nome</label>
+                                                <input name="name" value={values.name} onChange={handleChange} />
+                                                <label>Peso:</label>
+                                                <input name="weight" value={values.weight} onChange={handleChange} />
+                                                <DarkButton title="Atualizar" type="submit" action={handleSubmit} /> 
+                                            </div>
+                
+                                            <div className="rightSideContent">
+                                                <label>Senha</label>
+                                                <input type="password" name="password" value={values.password} onChange={handleChange} />
+                                                <label>Confirmar senha</label>
+                                                <input type="password" name="confirmPassword" value={values.confirmPassword} onChange={handleChange} />
+                                                <DarkButton id="deleteUser" title="Deletar" type="button" action={handleDeleteUser} />    
+                                            </div>
+                                        </div>
+                                </form>
+                               )}
+                            </Formik>
+                        ):(
                             <>
                                 <Appointment data={selectedAppointment} />
                                 <DarkButton  title="Sim, deletar" type="submit" action={deleteAppointment} />
