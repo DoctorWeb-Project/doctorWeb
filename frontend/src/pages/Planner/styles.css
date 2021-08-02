@@ -171,10 +171,71 @@
     
 }
 
-.rightSideContent button{
+/*.rightSideContent button{
     background: #F54A4A;
 }
 
 .rightSideContent button:hover{
     background: #eb2121;
+}*/
+
+.modal header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+}
+
+
+.appointmentAction span{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 35px;
+    color: #322153;
+    margin-right: 24px;
+    align-content: center;
+}
+
+.modal .appointmentAction svg{
+    display: none;
+}
+
+.appointmentInfo span{
+    margin-right: 5px;
+    margin-left: 5px;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.modal .dateSpan{
+    color: #9C7AE9;
+}
+
+.modal .timeSpan{
+    color: #34CB79;
+}
+
+.modal .priceSpan{
+    color: #6137B2;
+}
+
+.modal .pipe{
+    color: #8257E5;
+}
+
+.modal .appointment{
+    margin-top: 50px;
+}
+
+.modal > button{
+    margin-top: 50px;
+    background: #F54A4A;
+}
+
+.modal > button:hover{
+    background:#e92020 ;
 }
