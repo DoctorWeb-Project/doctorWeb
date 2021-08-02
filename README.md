@@ -31,6 +31,14 @@
 Esse projeto foi desenvolvido pelos alunos do 2 AII do curso técnico em Informática para a Internet do [Instituto Federal de Educação, Ciência e Tecnologia  Baiano](https://ifbaiano.edu.br)
 
 
+## :computer: Como executar o projeto
+Para conseguir executar o nosso código, é necessário que você tenha o Node.JS instalado em seu computador.
+Vá na pasta backend e digite npm install;
+Vá na pasta frontend e digite npm install;
+
+Depois de concluído, vá na pasta backend e frontend e digite npm start em cada uma delas para iniciar os servidores;
+
+
 ## :memo: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](/LICENSE) para mais detalhes.
