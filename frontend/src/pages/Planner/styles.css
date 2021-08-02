@@ -239,3 +239,7 @@
 .modal > button:hover{
     background:#e92020 ;
 }
+
+.modal .rightSideContent #deleteUser:last-child{
+    background: #F54A4A !important; 
+}
