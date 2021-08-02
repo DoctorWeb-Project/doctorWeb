@@ -9,6 +9,7 @@ import api from '../../services/api'
 import { useHistory } from 'react-router-dom'
 import { Formik } from 'formik'
 import moment from 'moment'
+import { useUser } from '../../contexts/userContext'
 
 
 
@@ -18,6 +19,7 @@ export function Planner(){
     const[selectedAppointment, setSelectedAppointment] = useState()
     const [modalType, setModalType] = useState('')
     const [reloadAppointemnts, setReloadAppointments] = useState(false)
+    const {userToken} = useUser()
 
     const history = useHistory()
     const month = moment(new Date()).format('MM')
@@ -82,7 +84,7 @@ export function Planner(){
     async function handleUpdateUser(values){
         try {
             await api.put('/atualizarConta', values)
-            localStorage.setItem('userName', values.name)
+            if(values.name) localStorage.setItem('userName', values.name)
             setModalVisible(false)
         } catch (error) {
             console.log(error)
@@ -97,6 +99,13 @@ export function Planner(){
         } catch (error) {
             
         }
+    }
+
+    function handleLogOut(){
+        localStorage.removeItem('token')
+        localStorage.removeItem('userName')
+
+        history.push('/')
     }
 
   
@@ -124,8 +133,9 @@ export function Planner(){
                 
                 <div className="userArea">
                     <DarkButton title="Adicionar" action={()=> {setModalVisible(true); setModalType('add')}} />
-                    <span>Bem-vindo, {localStorage.getItem('userName')}</span>
-                    <div className="userIcon">{localStorage.getItem('userName')[0]}</div>
+                    <DarkButton id="logOut" title="Sair" action={handleLogOut} />
+                    <span>Bem-vindo(a), { userToken && localStorage.getItem('userName')}</span>
+                    <div className="userIcon">{userToken && localStorage.getItem('userName')[0]}</div>
                     <div className="editInfo">
                         <FiEdit onClick={handleUserEditClick} color="#FFFF" size={24} />
                     </div>
