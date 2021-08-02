@@ -20,7 +20,7 @@ module.exports = {
 
             const token = auth.generateAccessToken(userRG)
 
-            return response.json(token)
+            return response.json({token, user})
 
         } catch (error) {
             console.log(error)
@@ -55,9 +55,9 @@ module.exports = {
 
             console.log("cpf: ",cpf)
 
-            if(data.nome)  await connection.raw(`UPDATE usuario SET nome="${data.nome}" WHERE cpf="${cpf}" `)
-            if(data.peso)  await connection.raw(`UPDATE usuario SET peso=${data.peso} WHERE cpf="${cpf}"`)
-            if(data.senha)  await connection.raw(`UPDATE usuario SET senha="${data.senha}" WHERE cpf="${cpf}"`)
+            if(data.name)  await connection.raw(`UPDATE usuario SET nome="${data.name}" WHERE cpf="${cpf}" `)
+            if(data.wieght)  await connection.raw(`UPDATE usuario SET peso=${data.weight} WHERE cpf="${cpf}"`)
+            if(data.password)  await connection.raw(`UPDATE usuario SET senha="${data.password}" WHERE cpf="${cpf}"`)
 
             return response.sendStatus(204)
 
