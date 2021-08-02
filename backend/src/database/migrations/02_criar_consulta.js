@@ -6,7 +6,7 @@ exports.up = function(Knex){
        table.float('preco', 9, 2).notNullable();
        table.string('paciente_cpf', 11 ).notNullable();
 
-       table.foreign('paciente_cpf').references('cpf').inTable('usuario');
+       table.foreign('paciente_cpf').references('cpf').inTable('usuario').onDelete('CASCADE');
     })
 }
 
