@@ -6,7 +6,7 @@ import api from '../../services/api'
 
 import './styles.css'
 import { DarkButton } from '../../components/DarkButton'
-import { Formik } from 'formik'
+import { Formik, Field } from 'formik'
 import { registerSchema } from '../../Schemas/registerSchema'
 
 export function Register(){
@@ -50,44 +50,44 @@ export function Register(){
                         <h2>Dados</h2>
 
                         <label>Nome</label>
-                        <input value={values.name} onChange={handleChange('name')} />
+                        <Field name="name" value={values.name} onChange={handleChange} />
                         {errors.name && <span className="Error">{errors.name}</span>}
                         
                         <div className="inputWrapper">
                             <div className="leftSideColumn">
                                 <label>Número do cpf</label>
-                                <input value={values.cpf} onChange={handleChange('cpf')} />
+                                <Field name="cpf" value={values.cpf} onChange={handleChange} />
                                 {errors.cpf && <span  className="Error">{errors.cpf}</span>}
 
                                 <label>Número do SUS</label>
-                                <input value={values.sus} onChange={handleChange('sus')} />
+                                <Field name="sus" value={values.sus} onChange={handleChange} />
                                 {errors.sus && <span  className="Error">{errors.sus}</span>}
 
                                 <label>Sexo</label>
-                                <input value={values.sex} onChange={handleChange('sex')} />
+                                <Field name="sex" value={values.sex} onChange={handleChange} />
                                 {errors.sex && <span  className="Error">{errors.sex}</span>}
 
                                 <label>Senha</label>
-                                <input value={values.password} onChange={handleChange('password')} />
+                                <Field type="password" name="password" value={values.password} onChange={handleChange} />
                                 {errors.password && <span  className="Error">{errors.password}</span>}
 
                             </div>
                                 
                             <div className="rightSideColumn">
                                 <label>Número do RG</label>
-                                <input value={values.rg} onChange={handleChange('rg')} />
+                                <Field name="rg" value={values.rg} onChange={handleChange} />
                                 {errors.rg && <span  className="Error" >{errors.rg}</span>}
                                     
                                 <label>Data de nascimento</label>
-                                <input value={values.birthdate} onChange={handleChange('birthdate')} />
+                                <Field name="birthdate" value={values.birthdate} onChange={handleChange} />
                                 {errors.birthdate && <span  className="Error" >{errors.birthdate}</span>}
                                     
                                 <label>Peso</label>
-                                <input value={values.weight} onChange={handleChange('weight')} />
+                                <Field name="weight" value={values.weight} onChange={handleChange} />
                                 {errors.weight && <span  className="Error" >{errors.weight}</span>}
                                     
                                 <label>Confirmar senha</label>
-                                <input value={values.confirmPassword} onChange={handleChange('confirmPassword')} />
+                                <Field type="password" name="confirmPassword" value={values.confirmPassword} onChange={handleChange} />
                                 {errors.confirmPassword && <span  className="Error" >{errors.confirmPassword}</span>}
                             </div>
                         </div>
