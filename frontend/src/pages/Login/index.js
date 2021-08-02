@@ -23,6 +23,16 @@ export function Login(){
 
         } catch (error) {
             console.log(error)
+
+            if(error.response){
+                if(error.response.status ===404){
+                    alert('Desculpe, usuário ou senha incorretos. Tente novamente')
+                }
+    
+                if(error.response.status ===500){
+                    alert("Desculpe, houve uma falha interna. Tente novavente mais tarde.")
+                }
+            }
             
         }
         
