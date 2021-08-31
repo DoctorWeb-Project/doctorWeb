@@ -5,7 +5,7 @@ module.exports ={
     async listarConsultas(request, response){
         const userRG = request.user.rg
         try {
-            const unfilteredCpf = await connection.raw(`SELECT cpf FROM usuario WHERE rg="${userRG}"`)
+            const unfilteredCpf = await connection.raw(`SELECT cpf FROM usuario WHERE rg='${userRG}'`)
             if(!unfilteredCpf[0][0]) return response.sendStatus(404)
 
             const cpf = unfilteredCpf[0][0].cpf
@@ -24,12 +24,12 @@ module.exports ={
         const userRG = request.user.rg
 
         try {
-            const unfilteredCpf = await connection.raw(`SELECT cpf FROM usuario WHERE rg="${userRG}"`)
+            const unfilteredCpf = await connection.raw(`SELECT cpf FROM usuario WHERE rg='${userRG}'`)
             if(!unfilteredCpf[0][0]) return response.sendStatus(404)
 
             const cpf = unfilteredCpf[0][0].cpf
 
-            await connection.raw(`INSERT INTO consulta VALUES(default,"${data.name}","${data.date}", ${data.price}, "${cpf}")`)
+            await connection.raw(`INSERT INTO consulta VALUES(default,'${data.name}','${data.date}', ${data.price}, '${cpf}')`)
 
             return response.sendStatus(201)
 
@@ -46,7 +46,7 @@ module.exports ={
         const id = request.params.id
         const userRG = request.user.rg
         try {
-            const unfilteredCpf = await connection.raw(`SELECT cpf FROM usuario WHERE rg="${userRG}"`)
+            const unfilteredCpf = await connection.raw(`SELECT cpf FROM usuario WHERE rg='${userRG}'`)
             if(!unfilteredCpf[0][0]) return response.sendStatus(404)
 
             const cpf = unfilteredCpf[0][0].cpf
@@ -55,9 +55,9 @@ module.exports ={
 
             if(!consultation[0][0]) return response.sendStatus(404)
 
-            if(data.date) await connection.raw(`UPDATE consulta SET data="${data.date}" WHERE id=${id} AND paciente_cpf=${cpf}`)
-            if(data.name) await connection.raw(`UPDATE consulta SET nome="${data.name}" WHERE id=${id} AND paciente_cpf=${cpf}`)
-            if(data.price) await connection.raw(`UPDATE consulta SET preco="${data.price}" WHERE id=${id} AND paciente_cpf=${cpf}`)
+            if(data.date) await connection.raw(`UPDATE consulta SET data='${data.date}' WHERE id=${id} AND paciente_cpf=${cpf}`)
+            if(data.name) await connection.raw(`UPDATE consulta SET nome='${data.name}' WHERE id=${id} AND paciente_cpf=${cpf}`)
+            if(data.price) await connection.raw(`UPDATE consulta SET preco='${data.price}' WHERE id=${id} AND paciente_cpf=${cpf}`)
 
             return response.sendStatus(204)
 
@@ -74,7 +74,7 @@ module.exports ={
         const id = request.params.id
 
         try {
-            const unfilteredCpf = await connection.raw(`SELECT cpf FROM usuario WHERE rg="${userRG}"`)
+            const unfilteredCpf = await connection.raw(`SELECT cpf FROM usuario WHERE rg='${userRG}'`)
             if(!unfilteredCpf[0][0]) return response.sendStatus(404)
 
             const cpf = unfilteredCpf[0][0].cpf
