@@ -8,7 +8,7 @@
 
 <p align="center">
 
-  <a href="https://rocketseat.com.br">
+  <a href="">
     <img alt="Made by DoctorWeb" src="https://img.shields.io/badge/made%20by-DoctorWeb-%23F8952D">
   </a>
 
