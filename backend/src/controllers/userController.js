@@ -33,7 +33,7 @@ module.exports = {
         const data = request.body
         console.log(request.body)
         try {
-            await connection.raw(`INSERT INTO usuario VALUES("${data.cpf}", "${data.name}", "${data.sex}", "${data.rg}", ${data.weight},"${data.sus}", ${data.birthdate}, "${data.password}")`)
+            await connection.raw(`INSERT INTO usuario VALUES('${data.cpf}', '${data.name}', '${data.sex}', '${data.rg}', ${data.weight},'${data.sus}', ${data.birthdate}, '${data.password}')`)
             return response.sendStatus(200)
 
         } catch (error) {
