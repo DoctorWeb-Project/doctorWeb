@@ -31,4 +31,4 @@ routes.get('/minhasConsultas', authenticateToken, consultationController.listarC
 App.use(routes)
 
 
-App.listen(3333)
+App.listen( process.env.PORT || 3333)
