@@ -1,8 +1,10 @@
   
 const knex = require('knex')
 
-const config = require('../../knexfile')
+const dbEngine = process.env.DB_ENVIRONMENT || 'development'
 
-const connection = knex(config.development)
+const config = require('../../knexfile')[dbEngine]
+
+const connection = knex(config)
 
 module.exports = connection;
